@@ -86,6 +86,13 @@ func (v *WebView) Settings() *Settings {
 	return newSettings(C.webkit_web_view_get_settings(v.webView))
 }
 
+// Stops any ongoing loading operation.  This method does nothing if no content is being loaded.  If
+// a load operation is in progress, it will be cancelled and a "load-failed" signal will be
+// emitted.
+func (v *WebView) StopLoading() {
+	C.webkit_web_view_stop_loading(v.webView)
+}
+
 // Title returns the current active title of the WebView.
 //
 // See also: webkit_web_view_get_title at
